@@ -1,1 +1,4 @@
 .venv
+*.csv
+les_arbres.ipynb
+ozone.ipynbgit
