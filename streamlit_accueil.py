@@ -65,7 +65,7 @@ def page2():
     submitted = st.button("Calculate simulation")
     if submitted:
         if st.session_state.smoker_radio==None or st.session_state.sex_radio==None or st.session_state.region==None:
-            st.write("Un paramètre n'a pas été rempli")
+            st.write("At least a parameter was not filled")
         else: 
             with open('best_model.pkl', 'rb') as f:
                 pickle_model = pickle.load(f)
@@ -85,7 +85,7 @@ def page2():
         st.session_state.reset=True
         st.rerun()
 
-    st.button("Retour à l'accueil", on_click=lambda: change_page(1))
+    st.button("Homepage", on_click=lambda: change_page(1))
 
 def change_page(page):
     st.session_state.page = page
