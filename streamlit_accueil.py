@@ -7,8 +7,8 @@ from classe_p import DropFeatureSelector
 def page_acceuil():
     st.title("IcAre Insurance")
     st.image("image.webp", use_container_width=True)
-    st.button("Lancer le questionnaire", on_click=lambda: change_page(2), key="image_button")
-    st.button("Quitter", on_click=lambda: st.stop())
+    st.button("Complete the survey,", on_click=lambda: change_page(2), key="image_button")
+    st.button("Quit", on_click=lambda: st.stop())
 
 def page2():
     st.write("Welcome to Assur Aimant home page!")
