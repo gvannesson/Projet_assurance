@@ -1,0 +1,7 @@
+README.md
+setup.py
+src/modele_assurance.egg-info/PKG-INFO
+src/modele_assurance.egg-info/SOURCES.txt
+src/modele_assurance.egg-info/dependency_links.txt
+src/modele_assurance.egg-info/top_level.txt
+tests/test_data_csv.py
