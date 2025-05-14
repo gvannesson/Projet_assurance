@@ -7,4 +7,7 @@ print('hello')
 print(os.getcwd())
 
 from src.data_csv import data
-print(data)
+
+
+def test_duplicate():
+    assert not data.duplicated().any()

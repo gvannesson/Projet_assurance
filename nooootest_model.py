@@ -70,3 +70,6 @@ def test_model_charges_dropped():
     
 def test_age_type():
     assert X['age'].dtype == 'int64'
+
+def test_duplicate():
+    assert not data.duplicated().any()
