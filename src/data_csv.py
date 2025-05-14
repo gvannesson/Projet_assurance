@@ -1,5 +1,5 @@
 import pandas as pd
-
+import os
 
 def readcsv(csv):
     data = pd.read_csv(csv)
@@ -10,4 +10,5 @@ def drop_dup(data):
     return data
 
 
-drop_dup(readcsv('dataset.csv'))
+if os.path.isfile('dataset.csv'):
+    drop_dup(readcsv('dataset.csv'))
