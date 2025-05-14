@@ -1,8 +1,6 @@
 name: Python CI
 
-on: [push, pull_request] # Déclenché sur un push ou une pull request
 
-# Ou plus spécifiquement :
 on:
   push:
     branches: [ main, develop, gauthier ] # Uniquement sur push vers main ou develop
