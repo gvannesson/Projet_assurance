@@ -1,13 +1,11 @@
 import pandas as pd
-
 import sys
 import os
-sys.path.append(os.getcwd())
 from src.data_csv import drop_dup
 from io import StringIO
 from csv import reader
 
-
+sys.path.append(os.getcwd())
 
 mon_mock=StringIO(
     "age,sex,bmi,children,smoker,region,charges\n"

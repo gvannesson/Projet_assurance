@@ -1,4 +1,3 @@
-from data_csv import data
 import pandas as pd
 import numpy as np
 from custom_pipeline import DropFeatureSelector
@@ -17,15 +16,16 @@ def train_test_creation(data):
     X_train, X_test, y_train, y_test = train_test_split(X, y, shuffle=True, train_size=0.85, random_state=42, stratify=X['smoker'])
     return X_train, X_test, y_train, y_test
 
+
 if os.path.isfile('dataset.csv'):
     data = drop_dup(readcsv('dataset.csv'))
 
     X_train, X_test, y_train, y_test = train_test_creation(data)
 
     preprocessor = make_pipeline(DropFeatureSelector(),make_column_transformer((StandardScaler(), ['children','age']),
-                                                        (OrdinalEncoder(), ['smoker', 'sex']), (OneHotEncoder(),['region',"BMI_cat"])), PolynomialFeatures(2))
+                                (OrdinalEncoder(), ['smoker', 'sex']), (OneHotEncoder(),['region',"BMI_cat"])), PolynomialFeatures(2))
 
-    #Linear Regression
+    # Linear Regression
 
     model = make_pipeline(preprocessor, LinearRegression())
 

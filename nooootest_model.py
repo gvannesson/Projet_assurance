@@ -9,7 +9,6 @@ from sklearn.compose import make_column_transformer, make_column_selector
 from sklearn.base import BaseEstimator, TransformerMixin
 
 
-
 data = pd.read_csv('dataset.csv')
 data.drop_duplicates(inplace=True, ignore_index=True)
 
@@ -41,7 +40,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, shuffle=True, train_si
 preprocessor = make_pipeline(DropFeatureSelector(),make_column_transformer((StandardScaler(), ['children','age']),
                                                      (OrdinalEncoder(), ['smoker', 'sex']), (OneHotEncoder(),['region',"BMI_cat"])), PolynomialFeatures(2))
 
-#Linear Regression
+# Linear Regression
 
 model = make_pipeline(preprocessor, LinearRegression())
 

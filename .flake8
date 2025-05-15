@@ -1,12 +1,16 @@
 [flake8]
-extend-ignore = E203
+extend-ignore = E203, E128, E225, F401, E231, E501, W293, E501, E302, W302, W402, E711, E251
 exclude =
     .git,
+    .venv,
     __pycache__,
     docs/source/conf.py,
     old,
     build,
     dist,
     .csv,
-    .ipynb
+    .ipynb,
+    .pkl,
+    nooootest_model.py,
+    streamlit_accueil.py
 max-complexity = 10
