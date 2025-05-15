@@ -20,24 +20,26 @@ def train_test_creation(data):
 if os.path.isfile('dataset.csv'):
     data = drop_dup(readcsv('dataset.csv'))
 
-preprocessor = make_pipeline(DropFeatureSelector(),make_column_transformer((StandardScaler(), ['children','age']),
-                                                     (OrdinalEncoder(), ['smoker', 'sex']), (OneHotEncoder(),['region',"BMI_cat"])), PolynomialFeatures(2))
+    X_train, X_test, y_train, y_test = train_test_creation(data)
 
-#Linear Regression
+    preprocessor = make_pipeline(DropFeatureSelector(),make_column_transformer((StandardScaler(), ['children','age']),
+                                                        (OrdinalEncoder(), ['smoker', 'sex']), (OneHotEncoder(),['region',"BMI_cat"])), PolynomialFeatures(2))
 
-model = make_pipeline(preprocessor, LinearRegression())
+    #Linear Regression
 
-# print(model.get_params())
+    model = make_pipeline(preprocessor, LinearRegression())
 
-param_grid = {
-    'pipeline__polynomialfeatures__degree': [1,2,3]
-}
+    # print(model.get_params())
 
-grid_search = GridSearchCV(
-    model,
-    param_grid,
-    cv=5,
-    scoring='r2'
-)
+    param_grid = {
+        'pipeline__polynomialfeatures__degree': [1,2,3]
+    }
 
-grid_search.fit(X_train, y_train)
+    grid_search = GridSearchCV(
+        model,
+        param_grid,
+        cv=5,
+        scoring='r2'
+    )
+
+    grid_search.fit(X_train, y_train)
