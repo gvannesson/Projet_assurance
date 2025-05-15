@@ -8,10 +8,17 @@ from sklearn.model_selection import train_test_split, cross_val_score, learning_
 from sklearn.pipeline import make_pipeline
 from sklearn.compose import make_column_transformer, make_column_selector
 from sklearn.base import BaseEstimator, TransformerMixin
+from data_csv import drop_dup, readcsv
+import os
 
-X= data.drop(['charges'], axis=1)
-y=data['charges']
-X_train, X_test, y_train, y_test = train_test_split(X, y, shuffle=True, train_size=0.85, random_state=42, stratify=X['smoker'])
+def train_test_creation(data):
+    X= data.drop(['charges'], axis=1)
+    y=data['charges']
+    X_train, X_test, y_train, y_test = train_test_split(X, y, shuffle=True, train_size=0.85, random_state=42, stratify=X['smoker'])
+    return X_train, X_test, y_train, y_test
+
+if os.path.isfile('dataset.csv'):
+    data = drop_dup(readcsv('dataset.csv'))
 
 preprocessor = make_pipeline(DropFeatureSelector(),make_column_transformer((StandardScaler(), ['children','age']),
                                                      (OrdinalEncoder(), ['smoker', 'sex']), (OneHotEncoder(),['region',"BMI_cat"])), PolynomialFeatures(2))
